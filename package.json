@@ -1,0 +1,13 @@
+{
+  "name": "mnode",
+  "description": "How to find the node version used by Meteor",
+  "version": "0.1.0",
+  "bin": {
+    "mnode": "./index.js"
+  },
+  "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arunoda/mnode.git"
+  }
+}
