@@ -13,14 +13,14 @@ if(fs.existsSync('smart.json')) {
 
 function getMeteorToolsPath() {
   try {
-    var version = fs.readFileSync('.meteor/release', {encoding: 'utf8'}).trim();
+    var version = fs.readFileSync('.meteor/release').toString().trim();
     var releases = require(util.format('%s/.meteor/releases/%s.release.json', process.env.HOME, version));
 
     var toolsPath = util.format('%s/.meteor/tools/%s', process.env.HOME, releases.tools);
     return toolsPath;
   } catch(ex) {
-    console.error("Seems like you are not in a meteor app or you haven't run app, altest once!");
-    process.exit(1);
+    console.error("\nSeems like you are not in a meteor app or you haven't run app, altest once!");
+    throw ex;
   }
 }
 
@@ -34,7 +34,7 @@ function getMeteorNode() {
 };
 
 function getMeteoriteNode(appPath) {
-  var smartLockFileContent = fs.readFileSync('smart.lock', {encoding: 'utf8'});
+  var smartLockFileContent = fs.readFileSync('smart.lock').toString();
   var smartLockFileJSON = JSON.parse(smartLockFileContent);
 
   if(smartLockFileJSON.meteor.git) {
