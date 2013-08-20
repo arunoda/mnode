@@ -4,6 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 
+var METEOR_APP_PATH = process.env.METEOR_APP_PATH || '.';
+
 if(fs.existsSync('smart.json')) {
   console.log(getMeteoriteNode());
 } else {
@@ -13,7 +15,7 @@ if(fs.existsSync('smart.json')) {
 
 function getMeteorToolsPath() {
   try {
-    var version = fs.readFileSync('.meteor/release').toString().trim();
+    var version = fs.readFileSync(METEOR_APP_PATH + '/.meteor/release').toString().trim();
     var releases = require(util.format('%s/.meteor/releases/%s.release.json', process.env.HOME, version));
 
     var toolsPath = util.format('%s/.meteor/tools/%s', process.env.HOME, releases.tools);
@@ -34,7 +36,7 @@ function getMeteorNode() {
 };
 
 function getMeteoriteNode(appPath) {
-  var smartLockFileContent = fs.readFileSync('smart.lock').toString();
+  var smartLockFileContent = fs.readFileSync(METEOR_APP_PATH + '/smart.lock').toString();
   var smartLockFileJSON = JSON.parse(smartLockFileContent);
 
   if(smartLockFileJSON.meteor.git) {
