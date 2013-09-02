@@ -42,7 +42,7 @@ function getMeteoriteNode(appPath) {
   if(smartLockFileJSON.meteor.git) {
     var repoNamespace = getGitNamespace(smartLockFileJSON.meteor.git);
     var commitSha = smartLockFileJSON.meteor.commit;
-    return path.resolve(homePath, '.meteorite/meteors', repoNamespace, commitSha, 'dev_bundle/bin/node');
+    return path.resolve(process.env.HOME, '.meteorite/meteors', repoNamespace, commitSha, 'dev_bundle/bin/node');
   } else {
     return getMeteorNode();
   }
