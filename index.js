@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+var url = require('url');
 
 var METEOR_APP_PATH = process.env.METEOR_APP_PATH || '.';
 
@@ -11,7 +12,6 @@ if(fs.existsSync('smart.json')) {
 } else {
   console.log(getMeteorNode());
 }
-
 
 function getMeteorToolsPath() {
   try {
