@@ -7,10 +7,18 @@ var url = require('url');
 
 var METEOR_APP_PATH = process.env.METEOR_APP_PATH || '.';
 
+var meteorNodePath;
 if(fs.existsSync('smart.json')) {
-  console.log(getMeteoriteNode());
+  meteorNodePath = getMeteoriteNode();
 } else {
-  console.log(getMeteorNode());
+  meteorNodePath = getMeteorNode();
+}
+
+//printing meteorNodePath
+if(process.argv[2] == '--node-path') {
+  console.log(path.resolve(meteorNodePath, '../../lib/node_modules'));
+} else {
+  console.log(meteorNodePath);
 }
 
 function getMeteorToolsPath() {
