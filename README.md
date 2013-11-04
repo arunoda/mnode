@@ -29,6 +29,12 @@ This simple tool, helps you to find the NodeJS binary used by meteor. This tool 
 
 * You need to tell `mnode`, about the PATH where meteor installed (git repo)
 
+### Getting NODE_PATH
+
+Now it is possible to get the NODE_PATH used by meteor's node
+
+* `mnode --node-path` will do the trick 
+
 See How to do it
 
     export METEOR_PATH=/path/to/the/git-repo
